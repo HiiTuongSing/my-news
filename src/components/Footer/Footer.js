@@ -1,14 +1,14 @@
 function Footer() {
   return (
     <div className="w-[100vw] min-h-[30vh]">
-      <div className="w-[90%] m-auto grid grid-cols-4 gap-5">
+      <div className="w-[90%] m-auto grid grid-cols-1 sm:grid-cols-4 gap-5">
         <div>
           <h1>My News Sdn Bhd</h1>
           <br />
           <p>Tel: 03-123456789</p>
           <p>Email: mynews@xmail.com</p>
         </div>
-        <div className="col-span-2">
+        <div className="sm:col-span-2">
           <p>
             At My News, we believe that staying informed should be easy and
             tailored to your interests. We bring you the latest headlines,

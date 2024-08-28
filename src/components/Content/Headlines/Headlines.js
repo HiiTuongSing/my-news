@@ -35,12 +35,12 @@ function Headlines() {
       >
         Test Load
       </button>
-      <div className="grid grid-cols-5 gap-2">
-        <div className="col-span-3">
+      <div className="grid grid-cols-1 sm:grid-cols-5 gap-2">
+        <div className="sm:col-span-3">
           <NewsCardLarge />
         </div>
         {isLoading && <h1 className="animate-pulse">Loading ...</h1>}
-        <div className="col-span-2 grid grid-cols-2 gap-2">
+        <div className="sm:col-span-2 grid grid-cols-2 gap-2">
           {articles.length > 0 &&
             articles.map((article, index) => {
               return <NewsCard key={index} article={article} />;

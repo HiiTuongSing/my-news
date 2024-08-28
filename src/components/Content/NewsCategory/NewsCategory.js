@@ -25,7 +25,7 @@ function NewsCategory() {
   };
 
   return (
-    <fieldset className="grid grid-cols-4 gap-2 border-2 p-2">
+    <fieldset className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-2 p-2">
       <legend className="flex w-full justify-between">
         <h1>Category</h1>
         <button onClick={() => test()}>Load</button>
