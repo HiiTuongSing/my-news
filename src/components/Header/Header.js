@@ -42,7 +42,7 @@ function Header() {
 
   return (
     <div className="w-[100vw] h-[10vh]">
-      <div className="flex w-[98%] lg:w-[80%] m-auto justify-between h-full items-center relative">
+      <div className="flex w-[98%] lg:w-[90%] m-auto justify-between h-full items-center relative">
         <button type="button" onClick={handleReset}>
           My News
         </button>

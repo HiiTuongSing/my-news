@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <div className="w-[100vw] min-h-[30vh]">
-      <div className="w-[80%] m-auto grid grid-cols-4 gap-5">
+      <div className="w-[90%] m-auto grid grid-cols-4 gap-5">
         <div>
           <h1>My News Sdn Bhd</h1>
           <br />
@@ -20,14 +20,12 @@ function Footer() {
         </div>
         <div>
           <ul>
-            <li>
-              <li>General</li>
-              <li>Health</li>
-              <li>Sports</li>
-              <li>Business</li>
-              <li>Technology</li>
-              <li>Science</li>
-            </li>
+            <li>General</li>
+            <li>Health</li>
+            <li>Sports</li>
+            <li>Business</li>
+            <li>Technology</li>
+            <li>Science</li>
           </ul>
         </div>
       </div>
