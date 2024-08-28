@@ -1,4 +1,15 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
+  const categories = [
+    "General",
+    "Health",
+    "Sports",
+    "Business",
+    "Technology",
+    "Science",
+  ];
+
   return (
     <div className="w-[100vw] min-h-[30vh]">
       <div className="w-[90%] m-auto grid grid-cols-1 sm:grid-cols-4 gap-5">
@@ -20,12 +31,13 @@ function Footer() {
         </div>
         <div>
           <ul>
-            <li>General</li>
-            <li>Health</li>
-            <li>Sports</li>
-            <li>Business</li>
-            <li>Technology</li>
-            <li>Science</li>
+            {categories.map((category, index) => {
+              return (
+                <li key={index}>
+                  <Link to={`/category/${category}`}>{category}</Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

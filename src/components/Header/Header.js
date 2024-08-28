@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
@@ -8,18 +9,22 @@ function Header() {
   const [keywords, setKeywords] = useState("");
   const menuRef = useRef(null);
   const toggleRef = useRef(null);
+  const categories = [
+    "General",
+    "Health",
+    "Sports",
+    "Business",
+    "Technology",
+    "Science",
+  ];
 
   console.log(keywords);
   console.log(category);
 
+  const navigate = useNavigate();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleReset = () => {
-    setIsMenuOpen(false);
-    setCategory(null);
-    setKeywords("");
   };
 
   const handleClickOutside = (e) => {
@@ -33,6 +38,12 @@ function Header() {
     }
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    navigate("/search/test");
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -43,21 +54,20 @@ function Header() {
   return (
     <div className="w-[100vw] h-[10vh]">
       <div className="flex w-[98%] lg:w-[90%] m-auto justify-between h-full items-center relative">
-        <button type="button" onClick={handleReset}>
-          My News
-        </button>
+        <Link to="/">My News</Link>
 
         {!isMobile ? (
           <>
             <ul className="flex w-[60%] justify-between">
-              <li onClick={() => setCategory("general")}>General</li>
-              <li onClick={() => setCategory("health")}>Health</li>
-              <li onClick={() => setCategory("sports")}>Sports</li>
-              <li onClick={() => setCategory("business")}>Business</li>
-              <li onClick={() => setCategory("technology")}>Technology</li>
-              <li onClick={() => setCategory("science")}>Science</li>
+              {categories.map((category, index) => {
+                return (
+                  <li key={index}>
+                    <Link to={`/category/${category}`}>{category}</Link>
+                  </li>
+                );
+              })}
             </ul>
-            <form>
+            <form onSubmit={(e) => handleSearch(e)}>
               <input
                 name="search"
                 type="text"
@@ -79,7 +89,7 @@ function Header() {
             role="menu"
             className="absolute left-[0px] top-[100%] w-full p-2 bg-red-200"
           >
-            <form>
+            <form onSubmit={(e) => handleSearch(e)}>
               <input
                 name="search"
                 type="text"

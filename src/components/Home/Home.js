@@ -1,7 +1,7 @@
-import Headlines from "./Headlines/Headlines";
-import NewsCategory from "./NewsCategory/NewsCategory";
+import Headlines from "../Headlines/Headlines";
+import NewsCategory from "../NewsCategory/NewsCategory";
 
-function Content() {
+function Home() {
   return (
     <div className="w-[100vw]">
       <div className="w-[90%] min-h-[90vh] m-auto">
@@ -19,4 +19,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default Home;
