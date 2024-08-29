@@ -18,9 +18,6 @@ function Header() {
     "Science",
   ];
 
-  console.log(keywords);
-  console.log(category);
-
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -41,7 +38,7 @@ function Header() {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    navigate("/search/test");
+    navigate(`/search/${keywords}`);
   };
 
   useEffect(() => {
@@ -62,7 +59,9 @@ function Header() {
               {categories.map((category, index) => {
                 return (
                   <li key={index}>
-                    <Link to={`/category/${category}`}>{category}</Link>
+                    <Link to={`/category/${category.toLocaleLowerCase()}`}>
+                      {category}
+                    </Link>
                   </li>
                 );
               })}
@@ -74,6 +73,7 @@ function Header() {
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
                 placeholder="Search news..."
+                required
               />
               <button type="submit">Search</button>
             </form>

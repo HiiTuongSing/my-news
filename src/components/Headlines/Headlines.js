@@ -1,19 +1,26 @@
 import axios from "axios";
 import NewsCard from "../NewsCard/NewsCard";
 import NewsCardLarge from "../NewsCardLarge/NewsCardLarge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Headlines() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const category = useParams();
   const test = () => {
-    setArticles(fetchHeadlines());
+    setArticles(fetchHeadlines(category.length > 0 ? category : "malaysia"));
   };
 
-  const fetchHeadlines = async () => {
+  // useEffect(() => {
+  //   setArticles([]);
+  //   setArticles(fetchHeadlines(category.id ? category.id : "malaysia"));
+  // }, [category]);
+
+  const fetchHeadlines = async (category) => {
     setIsLoading(true);
     const response = await axios.get(
-      "https://newsapi.org/v2/everything?q=malaysia&pageSize=4&page=1&sortBy=publishedAt&apiKey=0b3d3b7a151b4952b93507d2b9a71bde"
+      `https://newsapi.org/v2/everything?q=${category}&pageSize=4&page=1&sortBy=publishedAt&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`
     );
     setIsLoading(false);
     try {

@@ -7,13 +7,13 @@ function Home() {
       <div className="w-[90%] min-h-[90vh] m-auto">
         <Headlines />
         <br />
-        <NewsCategory />
+        <NewsCategory category="technology" />
         <br />
-        <NewsCategory />
+        <NewsCategory category="business" />
         <br />
-        <NewsCategory />
+        <NewsCategory category="sports" />
         <br />
-        <NewsCategory />
+        <NewsCategory category="health" />
       </div>
     </div>
   );
