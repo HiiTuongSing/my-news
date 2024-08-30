@@ -20,7 +20,7 @@ function Headlines() {
   const fetchHeadlines = async (category) => {
     setIsLoading(true);
     const response = await axios.get(
-      `https://newsapi.org/v2/everything?q=${category}&pageSize=4&page=1&sortBy=publishedAt&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`
+      `https://newsapi.org/v2/everything?q=${category}&pageSize=5&page=1&sortBy=publishedAt&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`
     );
     setIsLoading(false);
     try {
@@ -33,8 +33,10 @@ function Headlines() {
   console.log(articles);
 
   return (
-    <fieldset className="border-2 p-2">
-      <legend>Headlines</legend>
+    <fieldset className="border-2 p-2 border-blue-500">
+      <legend className="text-3xl font-bold px-4 text-blue-500">
+        {category.id ? category.id + " " : ""}Headlines
+      </legend>
       <button
         type="button"
         className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
@@ -42,16 +44,20 @@ function Headlines() {
       >
         Test Load
       </button>
-      <div className="grid grid-cols-1 sm:grid-cols-5 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 p-4">
         <div className="sm:col-span-3">
-          <NewsCardLarge />
+          {articles.length > 0 && <NewsCardLarge article={articles[0]} />}
         </div>
+
         {isLoading && <h1 className="animate-pulse">Loading ...</h1>}
-        <div className="sm:col-span-2 grid grid-cols-2 gap-2">
-          {articles.length > 0 &&
-            articles.map((article, index) => {
-              return <NewsCard key={index} article={article} />;
-            })}
+
+        <div className="sm:col-span-2 grid grid-cols-2 grid-rows-2 gap-2">
+          {articles.length > 1 &&
+            articles
+              .slice(1)
+              .map((article, index) => (
+                <NewsCard key={index} article={article} />
+              ))}
         </div>
       </div>
     </fieldset>

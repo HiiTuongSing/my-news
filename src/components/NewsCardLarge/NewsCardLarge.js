@@ -1,18 +1,14 @@
-function NewsCardLarge() {
+function NewsCardLarge({ article }) {
   return (
-    <div className="w-full relative">
-      <img
-        src="https://placehold.co/600x400"
-        alt="headline news"
-        className="w-full"
-      />
-      <div className="absolute bottom-0">
-        <h1>
-          Source <span>Time</span>
-        </h1>
-        <p>The title/description of the news.</p>
+    <a href={article.url}>
+      <div className="w-full relative text-blue-700 hover:text-blue-900">
+        <img src={article.urlToImage} alt="headline news" className="w-full" />
+        <div className="absolute bottom-0 bg-white/75 p-2">
+          <h1>{article.source.name}</h1>
+          <p className="font-bold limit-lines">{article.description}</p>
+        </div>
       </div>
-    </div>
+    </a>
   );
 }
 

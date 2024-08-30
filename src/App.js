@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DisplayCategoryResult from "./components/DisplayCategoryResult/DisplayCategoryResult";
 import DisplaySearchResult from "./components/DisplaySearchResult/DisplaySearchResult";
+import "./App.css";
 
 function App() {
   return (

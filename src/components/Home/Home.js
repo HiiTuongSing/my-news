@@ -3,7 +3,7 @@ import NewsCategory from "../NewsCategory/NewsCategory";
 
 function Home() {
   return (
-    <div className="w-[100vw]">
+    <div className="w-[100vw] py-10">
       <div className="w-[90%] min-h-[90vh] m-auto">
         <Headlines />
         <br />
