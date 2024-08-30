@@ -9,8 +9,8 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 function Headlines() {
   let category = useParams();
   if (!category.id) category.id = "malaysia";
-  // let url =  `https://newsapi.org/v2/everything?q=${category.id}&pageSize=5&page=1&sortBy=publishedAt&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`
-  let url = "/testapi5.json";
+  let url = `https://newsapi.org/v2/everything?q=${category.id}&pageSize=5&page=1&sortBy=publishedAt&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
+  // let url = "/testapi5.json";
 
   const { articles, isLoading, error } = useFetchNews(url);
 

@@ -20,11 +20,11 @@ export default function DisplaySearchResult() {
     source: null,
   };
   const [filter, setFilter] = useState(defaultFilter);
-  // let url = `https://newsapi.org/v2/everything?q=${category}&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
-  // if (dateStart) url += dateStart;
-  // if (dateEnd) url += dateEnd;
-  // if (source) url += source;
-  let url = "/testapi16.json";
+  let url = `https://newsapi.org/v2/everything?q=${category}&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
+  if (dateStart) url += dateStart;
+  if (dateEnd) url += dateEnd;
+  if (source) url += source;
+  // let url = "/testapi16.json";
   const { articles, isLoading, error } = useFetchNews(url);
 
   const handleFilter = (e) => {
@@ -83,7 +83,6 @@ export default function DisplaySearchResult() {
             </select>
           </fieldset>
 
-          {/* Date Range */}
           <fieldset className="border-t border-gray-200 pt-4">
             <legend className="text-base font-medium text-blue-700">
               Date Range
@@ -129,7 +128,6 @@ export default function DisplaySearchResult() {
             </div>
           </fieldset>
 
-          {/* Source */}
           <fieldset className="border-t border-gray-200 pt-4">
             <legend className="text-base font-medium text-blue-700">
               Source
@@ -180,7 +178,7 @@ export default function DisplaySearchResult() {
               return <NewsCard key={index} article={article} />;
             })}
         </div>
-        {articles.length > 16 && (
+        {articles.length > 15 && (
           <div className="col-span-2 sm:col-span-4 w-full flex justify-center my-4">
             <button
               className="border-2 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded text-white"

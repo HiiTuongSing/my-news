@@ -6,8 +6,8 @@ import { useFetchNews } from "../../hooks/hooks";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function NewsCategory({ category }) {
-  // let url = `https://newsapi.org/v2/everything?q=${category}&pageSize=4&page=1&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
-  let url = "/testapi4.json";
+  let url = `https://newsapi.org/v2/everything?q=${category}&pageSize=4&page=1&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
+  // let url = "/testapi4.json";
   const { articles, isLoading, error } = useFetchNews(url);
 
   return (

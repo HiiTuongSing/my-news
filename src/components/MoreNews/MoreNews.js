@@ -10,8 +10,8 @@ function MoreNews() {
   const category = useParams();
   const [page, setPage] = useState(1);
   const [currentPage, setCurrentPage] = useState([]);
-  // let url = `https://newsapi.org/v2/everything?q=${category.id}&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
-  let url = "/testapi16.json";
+  let url = `https://newsapi.org/v2/everything?q=${category.id}&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
+  // let url = "/testapi16.json";
   const { articles, isLoading, error } = useFetchNews(url);
 
   const handleLoadMore = () => {
@@ -37,7 +37,7 @@ function MoreNews() {
         currentPage.map((article, index) => {
           return <NewsCard key={index} article={article} />;
         })}
-      {currentPage.length > 16 && (
+      {currentPage.length > 0 && (
         <div className="flex w-full justify-center sm:col-span-4 col-span-2">
           <button
             type="button"
