@@ -59,7 +59,7 @@ function Header() {
 
         {!isMobile ? (
           <>
-            <ul className="flex w-[60%] justify-between text-blue-500">
+            <ul className="flex w-[60%] justify-around text-blue-500">
               {categories.map((category, index) => (
                 <li key={index} className="hover:text-blue-700">
                   <Link

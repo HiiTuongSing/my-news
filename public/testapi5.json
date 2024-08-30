@@ -1,0 +1,69 @@
+{
+    "articles": [
+        {
+            "source": {
+                "id": null,
+                "name": "Lalibre.be"
+            },
+            "author": "Mathieu Ladeveze",
+            "title": "À Bruxelles, tout le monde veut une piscine à ciel ouvert, mais pas forcément de la même façon : voici les projets les plus ambitieux",
+            "description": "Sur le toit du centre Tir, dans le bassin Vergote, au quai Béco… Les partis en lice pour les élections communales du 13 octobre inscrivent tous un projet de piscine à ciel ouvert dans leurs programmes ...",
+            "url": "https://www.lalibre.be/regions/bruxelles/2024/08/29/a-bruxelles-tout-le-monde-veut-une-piscine-a-ciel-ouvert-mais-pas-forcement-de-la-meme-facon-voici-les-projets-les-plus-ambitieux-ZLQSGSK4YBCM7PNYDRFNGQIVXQ/",
+            "urlToImage": "https://www.lalibre.be/resizer/v2/6CIKVCFQAREBLKX6OLJMTBBFNA.jpg?auth=0a0fcb43fed8a87c4898f0d2e910cda8c31313dd471883d3d5fa24e2ee6759f5&width=1200&height=630&quality=85&focal=960%2C531&watermark=https%3A%2F%2Fcloudfront-eu-central-1.images.arcpublishing.com%2Fipmgroup%2F3R4IDPARFVEO3L2LC5OCCXQ5RM.png%3A100%3A0%2C557",
+            "publishedAt": "2024-08-29T09:20:46Z",
+            "content": "Hier, le bourgmestre (tête de liste PS à la Ville) Philippe Close a annoncé sa volonté de faire aboutir un projet similaire, de nouveau dans le canal. Lui privilégie un partenariat public-privé (PPP)… [+3105 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Les Inrocks"
+            },
+            "author": "Sophie Rosemont",
+            "title": "Jeux paralympiques de Paris 2024 : une cérémonie d’ouverture juste, joyeuse et émouvante",
+            "description": "Chilly Gonzales, Sébastien Tellier, Christine and The Queens, Lucky Love, Myd : accompagnant les corps chorégraphiés par Alexander Ekman, les performances musicales ont allié la pop organique à l'electro.",
+            "url": "https://www.lesinrocks.com/musique/concert/jeux-paralympiques-de-paris-2024-une-ceremonie-douverture-juste-joyeuse-et-emouvante-627654-29-08-2024/",
+            "urlToImage": "https://www.lesinrocks.com/wp-content/thumbnails/uploads/2024/08/000_36EZ9WL-t-1024x663.jpg",
+            "publishedAt": "2024-08-29T09:18:12Z",
+            "content": "Chilly Gonzales, Sébastien Tellier, Christine and The Queens, Lucky Love, Myd : accompagnant les corps chorégraphiés par Alexander Ekman, les performances musicales ont allié la pop organique à l’ele… [+5469 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Mundodeportivo.com"
+            },
+            "author": "Óscar Périz",
+            "title": "La camiseta del instituto de LeBron James, a subasta por una cifra astronómica",
+            "description": "Tras más de dos décadas al más alto nivel, el impacto de LeBron James en el mundo del baloncesto sigue siendo mayúsculo. El de Akron, que pasó a ser profesional sin pasar por la universidad, logró ser una de las promesas más impactantes y prometedoras que jam…",
+            "url": "https://www.mundodeportivo.com/baloncesto/nba/20240829/1002306120/camiseta-instituto-lebron-james-subasta-cifra-astronomica.html",
+            "urlToImage": "https://www.mundodeportivo.com/files/og_thumbnail/uploads/2024/08/29/66d032537f3ac.png",
+            "publishedAt": "2024-08-29T09:17:21Z",
+            "content": "Tras más de dos décadas al más alto nivel, el impacto de LeBron James en el mundo del baloncesto sigue siendo mayúsculo. El de Akron, que pasó a ser profesional sin pasar por la universidad, logró se… [+1452 chars]"
+        },
+        {
+            "source": {
+                "id": "business-insider",
+                "name": "Business Insider"
+            },
+            "author": "Jason Guerrasio",
+            "title": "Hollywood's new hot business strategy: Celebrity BFFs",
+            "description": "From Taylor Swift helping Blake Lively to Ryan Reynolds teaming up with Rob McElhenney, Hollywood friendships are proving to be big business.",
+            "url": "https://www.businessinsider.com/celebrity-friendships-hollywood-business-strategy-taylor-swift-blake-lively-2024-8",
+            "urlToImage": "https://i.insider.com/66cf7b4b1aa2ac29ee352427?width=1200&format=jpeg",
+            "publishedAt": "2024-08-29T09:17:02Z",
+            "content": "Taylor Swift and Blake Lively are friends laughing to the bank, following right behind besties Ryan Reynolds and Rob McElhenney.Cindy Ord /Getty, Gareth Cattermole/TAS24/Getty, Gotham/Getty, Tyler Le… [+6891 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "NDTV News"
+            },
+            "author": "NDTV Sports Desk",
+            "title": "England vs Sri Lanka 2nd Test Live Streaming: When And Where To Watch",
+            "description": "England vs Sri Lanka 2nd Test Live Streaming And Live Telecast: When And Where To Watch",
+            "url": "https://sports.ndtv.com/cricket/england-vs-sri-lanka-2nd-test-live-streaming-and-live-telecast-when-and-where-to-watch-6443293",
+            "urlToImage": "https://c.ndtvimg.com/2024-08/l0r1lq38_joe-root_625x300_29_August_24.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=738",
+            "publishedAt": "2024-08-29T09:15:57Z",
+            "content": "England vs Sri Lanka 2nd Test Live Streaming: Sri Lanka will take a lot of heart from their valiant performance in the first Test, as they gear up for the second Test against hosts England, this time… [+1146 chars]"
+        }
+    ]
+}
