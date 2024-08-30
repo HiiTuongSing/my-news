@@ -9,6 +9,7 @@ function NewsCard({ article }) {
           src={article.urlToImage}
           alt="News Thumbnail"
           className="aspect-video"
+          loading="lazy"
         />
         <h3 className="limit-lines p-1 text-sm">{article.title}</h3>
       </div>

@@ -28,7 +28,7 @@ function MoreNews() {
 
   return (
     <fieldset className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-2 p-2 border-2 p-2 border-blue-500 w-full relative">
-      <legend className="flex w-full justify-between text-xl font-bold px-4 text-blue-500">
+      <legend className="flex w-full justify-between text-lg sm:text-xl font-bold px-4 text-blue-500">
         More about {capitalizeFirstLetter(category.id)}:
       </legend>
       {isLoading && <Loading />}

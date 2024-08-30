@@ -8,14 +8,7 @@ function Header() {
   const [keywords, setKeywords] = useState("");
   const menuRef = useRef(null);
   const toggleRef = useRef(null);
-  const categories = [
-    "General",
-    "Health",
-    "Sports",
-    "Business",
-    "Technology",
-    "Science",
-  ];
+  const categories = ["Health", "Sports", "Business", "Technology", "Science"];
 
   const navigate = useNavigate();
 
@@ -106,7 +99,7 @@ function Header() {
           <div
             ref={menuRef}
             role="menu"
-            className="absolute left-0 top-[100%] w-full p-4 bg-blue-100 border-t-2 border-blue-500"
+            className="absolute left-0 top-[100%] w-full p-4 bg-blue-100 border-t-2 border-blue-500 z-20"
           >
             <form onSubmit={(e) => handleSearch(e)} className="mb-4">
               <input

@@ -149,17 +149,17 @@ export default function DisplaySearchResult() {
             </select>
           </fieldset>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-2">
             <button
               type="button"
               onClick={() => resetFilter()}
-              className="w-full sm:w-auto bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out"
+              className="w-full sm:w-auto bg-red-500 hover:bg-red-700 text-white font-medium text-sm sm:text-md py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out"
             >
               Reset Filters
             </button>
             <button
               type="submit"
-              className="w-full sm:w-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out"
+              className="w-full sm:w-auto bg-blue-500 hover:bg-blue-700 text-white font-medium text-sm sm:text-md py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out"
             >
               Apply Filters
             </button>
@@ -174,7 +174,7 @@ export default function DisplaySearchResult() {
           {isLoading && <Loading />}
           {error && <ErrorMessage error={error} />}
         </legend>
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {currentPage.length > 0 &&
             currentPage.map((article, index) => {
               return <NewsCard key={index} article={article} />;

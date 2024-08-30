@@ -15,10 +15,10 @@ function Headlines() {
   const { articles, isLoading, error } = useFetchNews(url);
 
   return (
-    <fieldset className="border-2 p-2 border-blue-500 h-[425px] relative">
+    <fieldset className="border-2 p-2 border-blue-500 min-h-[425px] relative">
       {isLoading && <Loading />}
       {error && <ErrorMessage error={error} />}
-      <legend className="text-3xl font-bold px-4 text-blue-500">
+      <legend className="text-xl sm:text-3xl font-bold px-4 text-blue-500">
         {category.id ? capitalizeFirstLetter(category.id) + " " : ""}Headlines
       </legend>
       <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 p-4">
