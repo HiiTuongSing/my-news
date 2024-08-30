@@ -49,16 +49,21 @@ function Header() {
   }, []);
 
   return (
-    <div className="w-[100vw] h-[10vh]">
+    <div className="w-[100vw] h-[10vh] bg-blue-100">
       <div className="flex w-[98%] lg:w-[90%] m-auto justify-between h-full items-center relative">
-        <Link to="/">My News</Link>
+        <Link
+          to="/"
+          className="text-2xl font-bold text-blue-500 hover:text-blue-700"
+        >
+          My News
+        </Link>
 
         {!isMobile ? (
           <>
-            <ul className="flex w-[60%] justify-between">
+            <ul className="flex w-[60%] justify-between text-blue-500">
               {categories.map((category, index) => {
                 return (
-                  <li key={index}>
+                  <li key={index} className="hover:text-blue-700">
                     <Link to={`/category/${category.toLocaleLowerCase()}`}>
                       {category}
                     </Link>
@@ -66,16 +71,25 @@ function Header() {
                 );
               })}
             </ul>
-            <form onSubmit={(e) => handleSearch(e)}>
+            <form
+              onSubmit={(e) => handleSearch(e)}
+              className="text-blue-500 hover:text-blue-700"
+            >
               <input
                 name="search"
                 type="text"
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
                 placeholder="Search news..."
+                className="outline-blue-500 hover:outline-blue-700 rounded me-2 p-1"
                 required
               />
-              <button type="submit">Search</button>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-2 py-1 hover:bg-blue-700 rounded"
+              >
+                Search
+              </button>
             </form>
           </>
         ) : (
@@ -100,12 +114,15 @@ function Header() {
               <button type="submit">Search</button>
             </form>
             <ul className=" w-[60%] ">
-              <li onClick={() => setCategory("general")}>General</li>
-              <li onClick={() => setCategory("health")}>Health</li>
-              <li onClick={() => setCategory("sports")}>Sports</li>
-              <li onClick={() => setCategory("business")}>Business</li>
-              <li onClick={() => setCategory("technology")}>Technology</li>
-              <li onClick={() => setCategory("science")}>Science</li>
+              {categories.map((category, index) => {
+                return (
+                  <li key={index}>
+                    <Link to={`/category/${category.toLocaleLowerCase()}`}>
+                      {category}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ) : null}
