@@ -52,6 +52,9 @@ function MoreNews() {
     loadMore(category, page);
   }, [page]);
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   // useEffect(() => {
   //   setPage(1);
   //   setArticles([]);
@@ -59,23 +62,27 @@ function MoreNews() {
   // }, [category]);
 
   return (
-    <fieldset className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-2 p-2">
-      <legend className="flex w-full justify-between">
-        <h1>Category: {category.id}</h1>
-        <button onClick={() => test()}>Load</button>
-        {isLoading && <h1 className="animate-pulse">Loading ...</h1>}
+    <fieldset className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-2 p-2 border-2 p-2 border-blue-500 w-full">
+      <legend className="flex w-full justify-between text-xl font-bold px-4 text-blue-500">
+        Category: {capitalizeFirstLetter(category.id)}
+        {/* <button onClick={() => test()}>Load</button> */}
       </legend>
+      {isLoading && <h1 className="animate-pulse">Loading ...</h1>}
       {articles.length > 0 &&
         articles.map((article, index) => {
           return <NewsCard key={index} article={article} />;
         })}
-      <button
-        type="button"
-        className="border-2 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded text-white"
-        onClick={() => handleLoadMore()}
-      >
-        Load more...
-      </button>
+      {articles.length > 0 && (
+        <div className="flex w-full justify-center sm:col-span-4 col-span-2">
+          <button
+            type="button"
+            className="border-2 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded text-white"
+            onClick={() => handleLoadMore()}
+          >
+            Load more...
+          </button>
+        </div>
+      )}
     </fieldset>
   );
 }

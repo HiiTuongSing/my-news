@@ -16,6 +16,9 @@ function Headlines() {
   //   setArticles([]);
   //   setArticles(fetchHeadlines(category.id ? category.id : "malaysia"));
   // }, [category]);
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   const fetchHeadlines = async (category) => {
     setIsLoading(true);
@@ -35,7 +38,7 @@ function Headlines() {
   return (
     <fieldset className="border-2 p-2 border-blue-500">
       <legend className="text-3xl font-bold px-4 text-blue-500">
-        {category.id ? category.id + " " : ""}Headlines
+        {category.id ? capitalizeFirstLetter(category.id) + " " : ""}Headlines
       </legend>
       <button
         type="button"

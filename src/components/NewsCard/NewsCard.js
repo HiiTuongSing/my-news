@@ -1,6 +1,6 @@
 function NewsCard({ article }) {
   return (
-    <a href={article.url}>
+    <a href={article.url} target="_blank">
       <div className="relative bg-slate-100 h-full text-blue-700 hover:bg-slate-200 hover:text-blue-900">
         <h3 className="bg-white/75 w-full absolute left-0 top-0 text-xs p-1">
           {article.source.name}
