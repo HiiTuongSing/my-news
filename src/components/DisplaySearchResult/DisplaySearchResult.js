@@ -1,93 +1,68 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import NewsCard from "../NewsCard/NewsCard";
+import { useFetchNews } from "../../hooks/hooks";
+import Loading from "../Loading/Loading";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function DisplaySearchResult() {
-  const today = new Date().toISOString().split("T")[0];
   const keywords = useParams();
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [articles, setArticles] = useState([]);
-  const [filter, setFilter] = useState({
+  const [category, setCategory] = useState(keywords.id);
+  const [source, setSource] = useState(null);
+  const [dateStart, setDateStart] = useState(null);
+  const [dateEnd, setDateEnd] = useState(null);
+  const [currentPage, setCurrentPage] = useState([]);
+  const defaultFilter = {
     category: keywords.id,
-    dateStart: today,
-    dateEnd: today,
-    source: "",
-  });
-
-  const fetchByCategory = async (keywords, page) => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${keywords.id}&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`
-      );
-      setIsLoading(false);
-      setArticles(response.data.articles);
-    } catch (err) {
-      setIsLoading(false);
-      console.error(err);
-    }
+    dateStart: null,
+    dateEnd: null,
+    source: null,
   };
+  const [filter, setFilter] = useState(defaultFilter);
+  // let url = `https://newsapi.org/v2/everything?q=${category}&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`;
+  // if (dateStart) url += dateStart;
+  // if (dateEnd) url += dateEnd;
+  // if (source) url += source;
+  let url = "/testapi16.json";
+  const { articles, isLoading, error } = useFetchNews(url);
 
-  const test = () => {
-    fetchByCategory(keywords, page);
-  };
-
-  const loadMore = async (keywords, page) => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${keywords.id}&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`
-      );
-      setIsLoading(false);
-      setArticles((prev) => [...prev, ...response.data.articles]);
-    } catch (err) {
-      setIsLoading(false);
-      console.error(err);
-    }
-  };
-
-  const handleFilter = async (e) => {
+  const handleFilter = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    try {
-      const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${
-          filter.category === "" ? keywords.id : filter.category
-        }&from=${filter.dateStart}&to=${filter.dateEnd}${
-          filter.source
-        }&pageSize=16&page=${page}&sortBy=relativity&apiKey=0b3d3b7a151b4952b93507d2b9a71bde`
-      );
-      setIsLoading(false);
-      setArticles(response.data.articles);
-      if (!response.data.length > 0)
-        alert("No results found, try changing the filter.");
-    } catch (err) {
-      console.error(err);
-    }
+    setCategory(filter.category);
+    if (filter.dateStart) setDateStart(`&from=${filter.dateStart}`);
+    if (filter.dateEnd) setDateEnd(`&to=${filter.dateEnd}`);
+    if (filter.source) setSource(`&domains=${filter.source}`);
   };
 
   const handleLoadMore = () => {
     setPage(page + 1);
   };
 
-  useEffect(() => {
-    if (page === 1) return;
-    loadMore(keywords, page);
-  }, [page]);
+  const resetFilter = () => {
+    setCategory(keywords.id);
+    setDateStart(null);
+    setDateEnd(null);
+    setSource(null);
+    setFilter(defaultFilter);
+  };
 
-  // useEffect(() => {
-  //   setArticles([]);
-  //   setPage(1);
-  //   fetchByCategory(keywords, page);
-  // }, [keywords]);
+  useEffect(() => {
+    setCategory(keywords.id);
+  }, [keywords.id]);
+
+  useEffect(() => {
+    if (page === 1) {
+      setCurrentPage(articles);
+    } else {
+      setCurrentPage((previousPage) => [...previousPage, ...articles]);
+    }
+  }, [articles, page]);
 
   return (
     <div className="w-[90%] m-auto py-10 min-h-[90vh]">
       <div className="bg-slate-100 p-6 rounded-lg shadow-md mb-8 text-blue-500">
         <form onSubmit={(e) => handleFilter(e)} className="space-y-6">
-          {/* Category */}
           <fieldset className="border-t border-gray-200 pt-4">
             <legend className="text-base font-medium text-blue-700">
               Category
@@ -100,7 +75,7 @@ export default function DisplaySearchResult() {
               }
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
-              <option value="">Select Category</option>
+              <option value={keywords.id}>Select Category</option>
               <option value="technology">Technology</option>
               <option value="science">Science</option>
               <option value="business">Business</option>
@@ -124,9 +99,12 @@ export default function DisplaySearchResult() {
                 <input
                   type="date"
                   id="dateStart"
-                  value={filter.dateStart}
+                  value={filter.dateStart ? filter.dateStart : ""}
                   onChange={(e) =>
-                    setFilter({ ...filter, dateStart: e.target.value })
+                    setFilter({
+                      ...filter,
+                      dateStart: e.target.value,
+                    })
                   }
                   className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
@@ -141,7 +119,7 @@ export default function DisplaySearchResult() {
                 <input
                   type="date"
                   id="dateEnd"
-                  value={filter.dateEnd}
+                  value={filter.dateEnd ? filter.dateEnd : ""}
                   onChange={(e) =>
                     setFilter({ ...filter, dateEnd: e.target.value })
                   }
@@ -158,26 +136,30 @@ export default function DisplaySearchResult() {
             </legend>
             <select
               id="source"
-              value={filter.source}
+              value={filter.source ? filter.source : ""}
               onChange={(e) => setFilter({ ...filter, source: e.target.value })}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
               <option value="">Select Source</option>
-              <option value="&domains=thestar.com.my">The Star</option>
-              <option value="&domains=techcrunch.com">Tech Crunch</option>
-              <option value="&domains=thenextweb.com">The Next Web</option>
-              <option value="&domains=nst.com.my">New Straits Times</option>
-              <option value="&domains=theedgemarkets.com">
-                The Edge Markets
-              </option>
+              <option value="thestar.com.my">The Star</option>
+              <option value="techcrunch.com">Tech Crunch</option>
+              <option value="thenextweb.com">The Next Web</option>
+              <option value="nst.com.my">New Straits Times</option>
+              <option value="theedgemarkets.com">The Edge Markets</option>
             </select>
           </fieldset>
 
-          {/* Submit Button */}
-          <div className="flex justify-center">
+          <div className="flex justify-between">
+            <button
+              type="button"
+              onClick={() => resetFilter()}
+              className="w-full sm:w-auto bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out"
+            >
+              Reset Filters
+            </button>
             <button
               type="submit"
-              className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out"
+              className="w-full sm:w-auto bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out"
             >
               Apply Filters
             </button>
@@ -185,20 +167,20 @@ export default function DisplaySearchResult() {
         </form>
       </div>
 
-      <fieldset className="border-2 p-2 border-2 p-4 border-blue-500 w-full">
+      <fieldset className="border-2 p-2 border-2 p-4 border-blue-500 w-full relative">
         <legend className="text-xl text-blue-500 px-4">
           Showing Results for{" "}
-          <span className="text-blue-700 font-bold">{keywords.id}</span>
-          <button onClick={() => test()}>Load</button>
-          {isLoading && <h1 className="animate-pulse">Loading ...</h1>}
+          <span className="text-blue-700 font-bold">{category}</span>
+          {isLoading && <Loading />}
+          {error && <ErrorMessage error={error} />}
         </legend>
         <div className="grid grid-cols-4 gap-2">
-          {articles.length > 0 &&
-            articles.map((article, index) => {
+          {currentPage.length > 0 &&
+            currentPage.map((article, index) => {
               return <NewsCard key={index} article={article} />;
             })}
         </div>
-        {articles.length > 0 && (
+        {articles.length > 16 && (
           <div className="col-span-2 sm:col-span-4 w-full flex justify-center my-4">
             <button
               className="border-2 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded text-white"

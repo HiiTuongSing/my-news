@@ -4,6 +4,7 @@ import { capitalizeFirstLetter } from "../../utils/utils";
 import NewsCard from "../NewsCard/NewsCard";
 import NewsCardLarge from "../NewsCardLarge/NewsCardLarge";
 import Loading from "../Loading/Loading";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function Headlines() {
   let category = useParams();
@@ -16,6 +17,7 @@ function Headlines() {
   return (
     <fieldset className="border-2 p-2 border-blue-500 h-[425px] relative">
       {isLoading && <Loading />}
+      {error && <ErrorMessage error={error} />}
       <legend className="text-3xl font-bold px-4 text-blue-500">
         {category.id ? capitalizeFirstLetter(category.id) + " " : ""}Headlines
       </legend>

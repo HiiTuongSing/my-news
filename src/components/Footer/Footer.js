@@ -1,14 +1,7 @@
 import { Link } from "react-router-dom";
 
 function Footer() {
-  const categories = [
-    "General",
-    "Health",
-    "Sports",
-    "Business",
-    "Technology",
-    "Science",
-  ];
+  const categories = ["Health", "Sports", "Business", "Technology", "Science"];
 
   return (
     <div className="w-[100vw] min-h-[30vh] bg-blue-100 text-blue-500 pt-5">

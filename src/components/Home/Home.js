@@ -7,12 +7,12 @@ function Home() {
   return (
     <div className="w-[90%] min-h-[90vh] py-10 m-auto">
       <Headlines />
-      {categories.map((category) => {
+      {categories.map((category, index) => {
         return (
-          <>
+          <div key={index}>
             <br />
             <NewsCategory category={category} />
-          </>
+          </div>
         );
       })}
     </div>

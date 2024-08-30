@@ -18,7 +18,6 @@ export const useFetchNews = (url) => {
         // }, [0]);
         const response = await axios.get(url);
         setArticles(response.data.articles);
-        console.log(response.data.articles);
       } catch (error) {
         setError(error);
       } finally {

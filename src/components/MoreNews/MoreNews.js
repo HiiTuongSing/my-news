@@ -4,6 +4,7 @@ import { capitalizeFirstLetter } from "../../utils/utils";
 import { useFetchNews } from "../../hooks/hooks";
 import NewsCard from "../NewsCard/NewsCard";
 import Loading from "../Loading/Loading";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function MoreNews() {
   const category = useParams();
@@ -23,19 +24,20 @@ function MoreNews() {
     } else {
       setCurrentPage((previousPage) => [...previousPage, ...articles]);
     }
-  }, [articles]);
+  }, [articles, page]);
 
   return (
     <fieldset className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-2 p-2 border-2 p-2 border-blue-500 w-full relative">
       <legend className="flex w-full justify-between text-xl font-bold px-4 text-blue-500">
-        Category: {capitalizeFirstLetter(category.id)}
+        More about {capitalizeFirstLetter(category.id)}:
       </legend>
       {isLoading && <Loading />}
+      {error && <ErrorMessage error={error} />}
       {currentPage.length > 0 &&
         currentPage.map((article, index) => {
           return <NewsCard key={index} article={article} />;
         })}
-      {currentPage.length > 0 && (
+      {currentPage.length > 16 && (
         <div className="flex w-full justify-center sm:col-span-4 col-span-2">
           <button
             type="button"
