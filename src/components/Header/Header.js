@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 function Header() {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [category, setCategory] = useState(null);
   const [keywords, setKeywords] = useState("");
   const menuRef = useRef(null);
   const toggleRef = useRef(null);
@@ -61,19 +60,20 @@ function Header() {
         {!isMobile ? (
           <>
             <ul className="flex w-[60%] justify-between text-blue-500">
-              {categories.map((category, index) => {
-                return (
-                  <li key={index} className="hover:text-blue-700">
-                    <Link to={`/category/${category.toLocaleLowerCase()}`}>
-                      {category}
-                    </Link>
-                  </li>
-                );
-              })}
+              {categories.map((category, index) => (
+                <li key={index} className="hover:text-blue-700">
+                  <Link
+                    to={`/category/${category.toLocaleLowerCase()}`}
+                    className="transition duration-300 ease-in-out"
+                  >
+                    {category}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <form
               onSubmit={(e) => handleSearch(e)}
-              className="text-blue-500 hover:text-blue-700"
+              className="flex items-center space-x-2"
             >
               <input
                 name="search"
@@ -81,51 +81,65 @@ function Header() {
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
                 placeholder="Search news..."
-                className="outline-blue-500 hover:outline-blue-700 rounded me-2 p-1"
+                className="outline-blue-500 hover:outline-blue-700 rounded p-1 text-blue-500"
                 required
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-2 py-1 hover:bg-blue-700 rounded"
+                className="bg-blue-500 text-white px-4 py-2 hover:bg-blue-700 rounded transition duration-300 ease-in-out"
               >
                 Search
               </button>
             </form>
           </>
         ) : (
-          <button ref={toggleRef} type="button" onClick={toggleMenu}>
+          <button
+            ref={toggleRef}
+            type="button"
+            onClick={toggleMenu}
+            className="text-blue-500 hover:text-blue-700"
+          >
             Menu
           </button>
         )}
-        {isMenuOpen ? (
+        {isMenuOpen && (
           <div
             ref={menuRef}
             role="menu"
-            className="absolute left-[0px] top-[100%] w-full p-2 bg-red-200"
+            className="absolute left-0 top-[100%] w-full p-4 bg-blue-100 border-t-2 border-blue-500"
           >
-            <form onSubmit={(e) => handleSearch(e)}>
+            <form onSubmit={(e) => handleSearch(e)} className="mb-4">
               <input
                 name="search"
                 type="text"
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
                 placeholder="Search news..."
+                className="outline-blue-500 hover:outline-blue-700 rounded p-2 w-full mb-2"
+                required
               />
-              <button type="submit">Search</button>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white w-full py-2 hover:bg-blue-700 rounded transition duration-300 ease-in-out"
+              >
+                Search
+              </button>
             </form>
-            <ul className=" w-[60%] ">
-              {categories.map((category, index) => {
-                return (
-                  <li key={index}>
-                    <Link to={`/category/${category.toLocaleLowerCase()}`}>
-                      {category}
-                    </Link>
-                  </li>
-                );
-              })}
+            <ul className="text-blue-500 space-y-2">
+              {categories.map((category, index) => (
+                <li key={index}>
+                  <Link
+                    to={`/category/${category.toLocaleLowerCase()}`}
+                    className="block hover:text-blue-700 transition duration-300 ease-in-out"
+                    onClick={() => toggleMenu()}
+                  >
+                    {category}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );
